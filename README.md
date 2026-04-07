@@ -30,7 +30,7 @@ It uses prophesee's [linux-sensor-drivers](https://github.com/prophesee-ai/linux
     sudo apt -y install apt-utils build-essential software-properties-common wget unzip curl git cmake
     sudo apt -y install libopencv-dev libboost-all-dev libusb-1.0-0-dev libprotobuf-dev protobuf-compiler
     sudo apt -y install libhdf5-dev hdf5-tools libglew-dev libglfw3-dev libcanberra-gtk-module ffmpeg 
-    sudo apt -y install pybind11-dev
+    sudo apt -y install pybind11-dev libglfw3-dev libglew-dev libgles-dev
     ```
     * Install patched openeb (the same would apply for metavision)
     ``` bash
@@ -60,6 +60,11 @@ It uses prophesee's [linux-sensor-drivers](https://github.com/prophesee-ai/linux
     # this script is located within this repository. It configures v4l for any found/known sensor.
     ${RPI_SENSOR_DRIVERS_PATH}/rp5_setup_v4l.sh
     ```
+    To run this automatically at every boot, install the systemd service:
+    ``` bash
+    ${RPI_SENSOR_DRIVERS_PATH}/scripts/install-v4l-service.sh
+    ```
+    > To remove the service later: `${RPI_SENSOR_DRIVERS_PATH}/scripts/remove-v4l-service.sh`
 3. Environment variables:
     > We make use of 2 environment variables to finetune aspects of the acquisition pipeline:
     ``` bash 

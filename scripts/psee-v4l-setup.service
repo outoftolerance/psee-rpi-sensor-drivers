@@ -1,0 +1,13 @@
+[Unit]
+Description=Configure V4L2 links and formats for Prophesee event camera sensors
+After=multi-user.target
+ConditionPathExists=/usr/bin/media-ctl
+ConditionPathExists=/usr/bin/v4l2-ctl
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/rp5_setup_v4l.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
